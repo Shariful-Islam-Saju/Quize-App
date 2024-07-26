@@ -1,5 +1,4 @@
 import Button from "./Button";
-import Checkbox from "./Checkbox";
 import Form from "./Form";
 import Illustration from "./Illustration";
 import Info from "./Info";
@@ -7,14 +6,13 @@ import TextInput from "./TextInput";
 
 import style from "./style.module.css";
 
-const SignUp = () => {
+const Login = () => {
   return (
     <>
-      <h1>Create an account </h1>
+      <h1>Login to your Account </h1>
       <div className="column">
         <Illustration />
-        <Form className={`${style.signup}`}>
-          <TextInput type="name" placeholder="Enter your name" icon="person" />{" "}
+        <Form className={`${style.login}`}>
           <TextInput
             type="email"
             placeholder="Enter your email"
@@ -25,18 +23,16 @@ const SignUp = () => {
             placeholder="Enter your password"
             icon="lock"
           />{" "}
-          <TextInput
-            type="password"
-            placeholder="Confirm  password"
-            icon="lock_clock"
-          />
-          <Checkbox text="I agree to the Terms &amp; Conditions" />
           <Button />
-          <Info text1="Already have an account ? " text2="Login" link="signup" />
+          <Info
+            text1="Don't have any account ? "
+            text2="Signup"
+            link='signup'
+          />
         </Form>
       </div>
     </>
   );
 };
 
-export default SignUp;
+export default Login;

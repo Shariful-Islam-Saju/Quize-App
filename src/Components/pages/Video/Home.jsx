@@ -1,4 +1,4 @@
-import Videos from "./Video/Videos";
+import Videos from "./Videos";
 
 const Home = () => {
   return (

@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
-const Info = () => {
+const Info = ({ text1, text2, link }) => {
   return (
     <div className="info">
-      Already have an account?
-      <a href="login.html">Login</a> instead.
+      {text1}
+      <a href={`${link}`}>{text2}</a> instead.
     </div>
   );
 };
