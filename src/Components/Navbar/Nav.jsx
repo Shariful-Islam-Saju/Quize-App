@@ -9,7 +9,7 @@ const Nav = () => {
         <li>
           <a href="index.html" className={style.brand}>
             <img src={logo} alt="Learn with Sumit Logo" />
-            <h3>Learn with Sumit</h3>
+            <h3>Learn with Shariful Islam</h3>
           </a>
         </li>
       </ul>
