@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import style from './style.module.css'
 
-const Acount = () => {
+const Account = () => {
   return (
     <>
 
@@ -8,7 +9,7 @@ const Acount = () => {
         <span className="material-icons-outlined" title="Account">
           account_circle
         </span>
-        <a href="signup.html">Signup</a>
+        <Link to={'signup'}>Signup</Link>
         <span className="material-icons-outlined" title="Logout">
           {" "}
           logout{" "}
@@ -18,4 +19,4 @@ const Acount = () => {
   );
 };
 
-export default Acount;
+export default Account;
