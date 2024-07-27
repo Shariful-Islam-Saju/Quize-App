@@ -27,7 +27,7 @@ const Login = () => {
           <Info
             text1="Don't have any account ? "
             text2="Signup"
-            link='signup'
+            link="/signup"
           />
         </Form>
       </div>

@@ -7,10 +7,12 @@ import Quize from "./Components/pages/Quize/Quize";
 import Result from "./Components/pages/Result/Result";
 import Layout from "./Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Error from "./Components/pages/Error";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

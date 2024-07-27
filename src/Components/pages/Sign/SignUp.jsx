@@ -32,7 +32,7 @@ const SignUp = () => {
           />
           <Checkbox text="I agree to the Terms &amp; Conditions" />
           <Button />
-          <Info text1="Already have an account ? " text2="Login" link="signup" />
+          <Info text1="Already have an account ? " text2="Login" link="/login" />
         </Form>
       </div>
     </>
