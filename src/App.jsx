@@ -8,6 +8,7 @@ import Result from "./Components/pages/Result/Result";
 import Layout from "./Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./Components/pages/Error";
+import AuthProvider from "./Components/Context/AuthContext";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
+  );
 }
 
 export default App;

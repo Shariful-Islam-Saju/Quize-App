@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import "../firebaseConfig";
+import "../../fireBaseConfig";
 
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -20,6 +21,17 @@ function AuthProvider({ children }) {
   const [loding, setLoding] = useState(false);
   const [currentUser, setCurrentUser] = useState();
   // sign up method
+
+  useEffect(() => {
+    const auth = getAuth();
+    const Unsubcribe = onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      console.log(auth)
+      setLoding(true);
+      setCurrentUser(user);
+    });
+    return Unsubcribe;
+  }, []);
   const signUp = async (email, password, username) => {
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password, username);
@@ -36,8 +48,16 @@ function AuthProvider({ children }) {
     const auth = getAuth();
     return signOut(auth);
   };
+
+  const value = {
+    loding,
+    currentUser,
+    signUp,
+    login,
+    logOut,
+  };
   return (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={value}>
       {loding && <h1>Loding....</h1>}
       {loding && children}
     </AuthContext.Provider>
