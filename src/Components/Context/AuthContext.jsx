@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -11,11 +11,7 @@ import {
 } from "firebase/auth";
 import "../../fireBaseConfig";
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [loding, setLoding] = useState(false);
@@ -26,7 +22,7 @@ function AuthProvider({ children }) {
     const auth = getAuth();
     const Unsubcribe = onAuthStateChanged(auth, (user) => {
       console.log(user);
-      console.log(auth)
+      console.log(auth);
       setLoding(true);
       setCurrentUser(user);
     });
