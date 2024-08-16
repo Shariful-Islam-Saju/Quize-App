@@ -9,8 +9,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import "../../fireBaseConfig";
-
+import  "../../fireBaseConfig";
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
@@ -21,19 +20,22 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const auth = getAuth();
     const Unsubcribe = onAuthStateChanged(auth, (user) => {
-      console.log(user);
-      console.log(auth);
-      setLoding(true);
+      setLoding(false);
       setCurrentUser(user);
     });
     return Unsubcribe;
   }, []);
+
   const signUp = async (email, password, username) => {
-    const auth = getAuth();
-    await createUserWithEmailAndPassword(auth, email, password, username);
-    await updateProfile(auth.currentUser, { displayName: currentUser });
-    const user = auth.currentUser;
-    setCurrentUser({ ...user });
+    try {
+      const auth = getAuth();
+      await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, { displayName: username  });
+      const user = auth.currentUser;
+      setCurrentUser({ ...user });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const login = (email, password) => {
@@ -55,7 +57,7 @@ function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={value}>
       {loding && <h1>Loding....</h1>}
-      {loding && children}
+      {!loding && children}
     </AuthContext.Provider>
   );
 }
