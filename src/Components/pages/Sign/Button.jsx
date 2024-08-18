@@ -1,8 +1,8 @@
 import style from "./style.module.css";
 
-const Button = () => {
+const Button = ({ disabled }) => {
   return (
-    <button className={style.button}>
+    <button disabled={disabled} className={style.button}>
       <span>Submit now</span>
     </button>
   );
