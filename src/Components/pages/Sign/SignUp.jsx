@@ -50,7 +50,7 @@ const SignUp = () => {
             type="name"
             placeholder="Enter your name"
             icon="person"
-            // required
+            required
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -60,7 +60,7 @@ const SignUp = () => {
             type="email"
             placeholder="Enter your email"
             icon="alternate_email"
-            // required
+            required
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -70,7 +70,7 @@ const SignUp = () => {
             type="password"
             placeholder="Enter your password"
             icon="lock"
-            // required
+            required
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -80,7 +80,7 @@ const SignUp = () => {
             type="password"
             placeholder="Confirm  password"
             icon="lock_clock"
-            // required
+            required
             value={confirmPassword}
             onChange={(e) => {
               setConfirmPassword(e.target.value);
@@ -88,7 +88,7 @@ const SignUp = () => {
           />
           <Checkbox
             text="I agree to the Terms &amp; Conditions"
-            // required
+            required
             value={condition}
             onChange={(e) => {
               setCondition(e.target.value);
