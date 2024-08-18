@@ -9,6 +9,8 @@ import Layout from "./Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./Components/pages/Error";
 import AuthProvider from "./Components/Context/AuthContext";
+import ProtectedRoute from "./Components/Context/ProtectedRoute";
+import ProtectedLog from "./Components/Context/ProtectedLog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,23 +19,45 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />{" "}
+          </ProtectedRoute>
+        ),
       },
       {
         path: "signup",
-        element: <SignUp />,
+        element: (
+          <ProtectedLog>
+            <SignUp />
+          </ProtectedLog>
+        ),
       },
       {
         path: "quize",
-        element: <Quize />,
+        element: (
+          <ProtectedRoute>
+            <Quize />{" "}
+          </ProtectedRoute>
+        ),
       },
       {
         path: "result",
-        element: <Result />,
+        element: (
+          <ProtectedRoute>
+            {" "}
+            <Result />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <ProtectedLog>
+            {" "}
+            <Login />
+          </ProtectedLog>
+        ),
       },
     ],
   },
