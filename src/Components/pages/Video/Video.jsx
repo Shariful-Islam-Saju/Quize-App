@@ -1,16 +1,21 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
-import logo from "../../../assets/images/3.jpg";
 import style from "./style.module.css";
 
-const Video = () => {
+const Video = ({ item }) => {
+  const { title, youtubeID, noq } = item;
   return (
     <Link to={"quize"}>
       <div className={style.video}>
-        <img src={logo} alt="" />
-        <p>#23 React Hooks Bangla - React useReducer hook Bangla</p>
+        <img
+          src={`https://img.youtube.com/vi/${youtubeID}/maxresdefault.jpg`}
+          alt={title}
+        />
+        <p style={{ height: "60px" }}>{title}</p>
         <div className={style.qmeta}>
-          <p>10 Questions</p>
-          <p>Score : Not taken yet</p>
+          <p>{noq} Questions</p>
+          <p>Score : {noq * 5}</p>
         </div>
       </div>
     </Link>

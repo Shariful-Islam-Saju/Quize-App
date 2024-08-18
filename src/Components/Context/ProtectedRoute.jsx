@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const ProtectedRoute = ({ children }) => {
-  const { currentUser , loding} = useAuth();
-  console.log(useAuth());
+  const [loding, setLoding] = useState(false);
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (!currentUser) {
+      setLoding(false)
       navigate("/login");
     }
   }, [currentUser, navigate]);
