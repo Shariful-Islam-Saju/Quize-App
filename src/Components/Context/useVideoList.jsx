@@ -23,7 +23,7 @@ const useVideoList = (page) => {
       const videoQuery = query(
         videosRef,
         orderByKey(),
-        startAt("0"),
+        startAt("0" ),
         limitToFirst(8 + page)
       );
       try {
