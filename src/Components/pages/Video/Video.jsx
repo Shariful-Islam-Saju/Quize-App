@@ -5,11 +5,12 @@ import style from "./style.module.css";
 
 const Video = ({ item }) => {
   const { title, youtubeID, noq } = item;
+
   const haveQ = noq === 0 ? true : false;
 
   if (haveQ) {
     return (
-      <div >
+      <div>
         <div className={style.video}>
           <img
             src={`https://img.youtube.com/vi/${youtubeID}/maxresdefault.jpg`}
@@ -25,7 +26,10 @@ const Video = ({ item }) => {
     );
   } else {
     return (
-      <Link to={"quize"}>
+      <Link
+        to={`quize/${youtubeID}`}
+        state={{youtubeID}}
+      >
         <div className={style.video}>
           <img
             src={`https://img.youtube.com/vi/${youtubeID}/maxresdefault.jpg`}
