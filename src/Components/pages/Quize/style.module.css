@@ -157,6 +157,7 @@
   display: none;
 }
 
+
 .tooltip::after {
   content: "";
   width: 15px;
