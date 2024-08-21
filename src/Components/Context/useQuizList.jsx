@@ -36,7 +36,6 @@ const useQuizeList = (id) => {
     }
 
     renderQuize();
-    console.log('Hello')
   }, [id]);
   return { loding, error, quize };
 };
