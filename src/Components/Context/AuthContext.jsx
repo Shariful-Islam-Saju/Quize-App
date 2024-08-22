@@ -1,4 +1,3 @@
-
 import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
@@ -8,7 +7,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import  "../../fireBaseConfig";
+import "../../fireBaseConfig";
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
@@ -29,7 +28,7 @@ function AuthProvider({ children }) {
     try {
       const auth = getAuth();
       await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, { displayName: username  });
+      await updateProfile(auth.currentUser, { displayName: username });
       const user = auth.currentUser;
       setCurrentUser({ ...user });
     } catch (error) {

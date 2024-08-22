@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Answer from "./Answer";
 import MiniPlayer from "./MiniPlayer";
-import Progressbar from "./Progressbar";
 import useQuizList from "../../Context/useQuizList";
 import { useLocation } from "react-router-dom";
 import reducer from "./useReducers";
+import ProgressConstants from "./progressConstants";
 
 const Quize = () => {
   const location = useLocation();
@@ -12,6 +12,7 @@ const Quize = () => {
   const [currentQuestion, setCurrentQueston] = useState(0);
   const { loding, error, quize } = useQuizList(id);
   const [qna, dispatch] = useReducer(reducer, quize);
+
   const handleChange = (e, i) => {
     dispatch({
       type: "answer",
@@ -22,23 +23,6 @@ const Quize = () => {
       },
     });
   };
-
-  function nextQ() {
-    if (currentQuestion + 1 < quize.length) {
-      setCurrentQueston((q) => q + 1);
-    }
-  }
-
-  const percentage =
-    quize && quize.length > 0
-      ? ((currentQuestion + 1) / quize.length) * 100
-      : 0;
-
-  function prevQ() {
-    if (currentQuestion >= 1 && currentQuestion <= quize.length) {
-      setCurrentQueston((q) => q - 1);
-    }
-  }
 
   useEffect(() => {
     dispatch({ type: "questions", payload: quize });
@@ -56,7 +40,14 @@ const Quize = () => {
         options={qna && qna[currentQuestion].options}
         handleChange={handleChange}
       />
-      <Progressbar next={nextQ} progress={percentage} prev={prevQ} />
+      <ProgressConstants
+        currentQuestion={currentQuestion}
+        setCurrentQueston={(number) => {
+          setCurrentQueston((q) => q + number);
+        }}
+        quize={quize}
+      />
+
       <MiniPlayer />
     </div>
   );
